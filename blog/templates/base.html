@@ -22,6 +22,37 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="{% static "blog/js/bootstrap.min.js " %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".likebtn").click(function (event) {
+                event.preventDefault()
+                var ansid = $(this).attr('id');
+                $.ajax({
+                    url: $(this).data('url'),
+                    type: 'POST',
+                    data: {
+                        'post_id': ansid,
+                        'csrfmiddlewaretoken': "{{ csrf_token }}",
+                        'action': 'post'
+                    },
+                    success: function (response) {
+                        $('#like_count' + ansid).text(response['result']);
+                        // console.log(response['stated'])
+                        if (response['flag']) {
+                            $('#' + ansid).addClass('text-danger');
+                        } else {
+                            $('#' + ansid).removeClass('text-danger');
+                        }
+                    },
+                    error: function (rs, e) {
+                        console.log(rs.response)
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>
