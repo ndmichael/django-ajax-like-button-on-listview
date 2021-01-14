@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class=" row">
+        {% for post in posts %}
+        <div class="col-md-4 my-5">
+            <div class="h-100 hvr-shrink"
+                style="box-shadow: 0 1px 7px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 20px">
+                <div class=" text-dark">
+                    {% if post.thumbnail %}
+                    <img src="{{post.thumbnail.url}}" class="img-fluid product-img" alt="{{post.title}}"
+                        style="height: 220px; width: 100%; object-fit: cover; object-position: center;">
+                    {% else %}
+                    <img src="/media/1.png" alt="no thumbnail"
+                        style="height: 220px; width: 100%; object-fit: cover; object-position: center;" />
+                    {% endif %}
+                    <div class="p-4">
+                        <p><b>By</b>: {{ post.author }} </p>
+
+                        <h2 class="py-2 h3"> {{ post.title|truncatechars:50 }} </h2>
+                        <p>
+                            {{ post.content|truncatechars:70 }}
+                        </p>
+                    </div>
+                    
+                    
+                    <div>
+                        <button type="button" id="{{ post.pk }}" data-url="" value="{{ post.pk }}" 
+                            class="btn border-0 likebtn">
+                            <i id="icons" class="icofont icofont-thumbs-up icofont-2x"></i>
+                        </button>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content %}

@@ -7,11 +7,17 @@ from django.utils import timezone
 
 class Post (models.Model):
 
-    title = models.CharField()
+    STATUS_POST = (
+        ('published', 'Published'),
+        ('status', 'Status'),
+    )
+
+    title = models.CharField(max_length=100)
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_published = models.DateTimeField(default=timezone.now)
     thumbnail = models.ImageField(upload_to='post_images/%Y/%m/%d', default="",  blank=True, null=True)
+    status = models.CharField(max_length=15, choices=STATUS_POST, default='published')
 
     def __str__(self):
         return f"{self.title}"
