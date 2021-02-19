@@ -19,10 +19,7 @@
                     {% endif %}
                     <div class="p-2">
                         <p><b>By</b>: {{ post.author }} </p>
-                        <h2 class="pb-2 h3"> {{ post.title|truncatechars:50 }} </h2>
-                        <p>
-                            {{ post.content|truncatechars:70 }}
-                        </p>
+                        <h2 class="pb-2 h3"> {{ post.title|truncatechars:40 }} </h2>
                     </div>
                     
                     
@@ -31,7 +28,7 @@
                             class="btn border-0 likebtn m-0 p-0">
                             <i id="icons" class="icofont icofont-thumbs-up icofont-2x"></i>
                         </button>
-                        <span id="like_count{{post.pk}}" class="like_count mt-3">{{post.total_likes}}</span>
+                        <span id="like_count{{post.pk}}" class="like_count mt-3 pl-2">{{post.total_likes}}</span>
                         
                     </div>
                     
