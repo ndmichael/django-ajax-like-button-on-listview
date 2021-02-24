@@ -24,12 +24,11 @@
                     
                     
                     <div class="bg-light py-2 px-3 ml-2 mb-1" style="display: inline-block; border-radius: 20px;">
-                            <button type="button" id="{{ post.pk }}" data-url="{% url 'blog:post_like' %}"
+                        <button type="button" id="{{ post.pk }}" data-url="{% url 'blog:post_like' %}"
                             class="btn border-0 likebtn m-0 p-0">
                             <i id="icons" class="icofont icofont-thumbs-up icofont-2x"></i>
                         </button>
-                        <span id="like_count{{post.pk}}" class="like_count mt-3 pl-2">{{post.total_likes}}</span>
-                        
+                        <span id="like_count{{post.pk}}" class="like_count mt-3 pl-2">{{post.total_likes}}</span>             
                     </div>
                     
                 </div>
