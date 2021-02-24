@@ -22,12 +22,11 @@ class PostDetailView(DetailView):
     context_object_name = 'post'
 
 
-    # the like button view
+# the like button view
 @login_required
 def post_like(request):
     # if request.method == 'POST' and request.is_ajax():
-    if request.POST.get('action') == 'post':
-        print(request.POST.get('action'))
+    if request.POST.get('action') == 'post': 
         flag = None
         postid = int(request.POST.get('post_id'))
         post_obj = get_object_or_404(Post, id=postid)
